@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AspireKeycloakExample.Api/AspireKeycloakExample.Api.csproj" />
+  <Project Path="AspireKeycloakExample.AppHost/AspireKeycloakExample.AppHost.csproj" />
+  <Project Path="AspireKeycloakExample.ServiceDefaults/AspireKeycloakExample.ServiceDefaults.csproj" />
+  <Project Path="AspireKeycloakExample.Web/AspireKeycloakExample.Web.csproj" />
+</Solution>

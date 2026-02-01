@@ -1,0 +1,57 @@
+{
+  "id": "5fa9b7bf-977d-4048-86f2-29770827a197",
+  "realm": "weather",
+  "roles": {
+    "client": {
+      "postman": [],
+      "weather.api": []
+    }
+  },
+  "clients": [
+    {
+      "id": "e5353e94-25cc-4390-bf07-576cca50e50b",
+      "clientId": "postman",
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${KEYCLOAK_CLIENT_POSTMAN_SECRET}",
+      "redirectUris": [ "https://oauth.pstmn.io/v1/callback" ],
+      "webOrigins": [ "https://oauth.pstmn.io" ],
+      "protocol": "openid-connect",
+      "optionalClientScopes": [ "address", "phone", "offline_access", "weather:all", "microprofile-jwt" ]
+    },
+    {
+      "id": "64de7f7a-2495-4312-9215-12b50b3a8e1c",
+      "clientId": "weather.api",
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${KEYCLOAK_CLIENT_WEATHERAPI_SECRET}",
+      "redirectUris": [ "/*" ],
+      "webOrigins": [ "/*" ],
+      "protocol": "openid-connect",
+      "publicClient": false
+    }
+  ],
+  "clientScopes": [
+    {
+      "id": "bcea00c0-5c7b-4d6c-ac26-2ea96628bc7d",
+      "name": "weather:all",
+      "protocol": "openid-connect",
+      "protocolMappers": [
+        {
+          "id": "79189c93-0164-4795-bff5-54c4a8578aed",
+          "name": "weather api audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "weather.api",
+            "introspection.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "id.token.claim": "false",
+            "lightweight.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "defaultOptionalClientScopes": [ "offline_access", "address", "phone", "microprofile-jwt", "weather:all" ]
+}
